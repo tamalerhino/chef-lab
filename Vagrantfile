@@ -29,16 +29,16 @@ Vagrant.configure(2) do |config|
   end
 
 # Creates the Chef Automate Server
-  config.vm.define :chef-automate do |chef-automate|
-      chef_server_config.vm.box = "bento/ubuntu-16.04"
-      chef_server_config.vm.hostname = "chef-automate"
-      chef_server_config.vm.network :private_network, ip: "10.0.15.13"
-      chef_server_config.vm.network "forwarded_port", guest: 80, host: 9000
+  config.vm.define :chef_automate do |chef_automate_config|
+      chef_automate_config.vm.box = "bento/ubuntu-16.04"
+      chef_automate_config.vm.hostname = "chef-automate"
+      chef_automate_config.vm.network :private_network, ip: "10.0.15.13"
+      chef_automate_config.vm.network "forwarded_port", guest: 80, host: 9000
       config.vm.provision "shell", inline: "apt-get update && apt-get install -y unzip"
-      chef_server_config.vm.provider "virtualbox" do |vb|
+      chef_automate_config.vm.provider "virtualbox" do |vb|
         vb.memory = "4096"
       end
-      chef_server_config.vm.provision :shell, path: "scripts/bootstrap-chef-automate-server.sh"
+      chef_automate_config.vm.provision :shell, path: "scripts/bootstrap-chef-automate-server.sh"
   end
 
 # Creates the Load Balancer
