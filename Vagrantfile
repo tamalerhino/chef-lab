@@ -25,7 +25,7 @@ Vagrant.configure(2) do |config|
       chef_server_config.vm.provider "virtualbox" do |vb|
         vb.memory = "4096"
       end
-      chef_server_config.vm.provision :shell, path: "provision/bootstrap-chef-server.sh"
+      chef_server_config.vm.provision :shell, path: "scripts/bootstrap-chef-server.sh"
   end
 
 # Creates the Chef Automate Server
@@ -38,7 +38,7 @@ Vagrant.configure(2) do |config|
       chef_server_config.vm.provider "virtualbox" do |vb|
         vb.memory = "4096"
       end
-      chef_server_config.vm.provision :shell, path: "provision/bootstrap-chef-automate-server.sh"
+      chef_server_config.vm.provision :shell, path: "scripts/bootstrap-chef-automate-server.sh"
   end
 
 # Creates the Load Balancer
@@ -50,7 +50,7 @@ Vagrant.configure(2) do |config|
        lb_config.vm.provider "virtualbox" do |vb|
          vb.memory = "256"
        end
-       lb_config.vm.provision :shell, path: "provision/nodes.sh"
+       lb_config.vm.provision :shell, path: "scripts/nodes.sh"
    end
 
 # Creates the two web servers
@@ -63,7 +63,7 @@ Vagrant.configure(2) do |config|
       node.vm.provider "virtualbox" do |vb|
         vb.memory = "256"
       end
-      node.vm.provision :shell, path: "provision/nodes.sh"
+      node.vm.provision :shell, path: "scripts/nodes.sh"
     end
   end
 
