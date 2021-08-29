@@ -7,6 +7,7 @@ rpm -Uvh  /tmp/chef-12.16.42-1.el7.x86_64.rpm
 sudo yum update -y
 sudo yum upgrade -y
 sudo yum install vim ntp -y
+sudo yum install tree
 
 # configure hosts file for our internal network defined by Vagrantfile
 cat >> /etc/hosts <<EOL
